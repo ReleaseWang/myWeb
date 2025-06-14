@@ -28,7 +28,7 @@ class _WelcomePageState extends State<WelcomePage> {
           height:1800,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/Image/web_background1.jpg'),
+              image: AssetImage('assets/images/web_background1.jpg'),
               fit: BoxFit.fill
             )
           ),
