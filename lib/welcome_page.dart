@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import 'blog_page.dart';
@@ -14,6 +16,14 @@ class WelcomePage extends StatefulWidget {
 }
 
 class _WelcomePageState extends State<WelcomePage> {
+  int index = 0;
+  final List<String> imagePathList = [
+    'assets/images/web_bg1.jpg',
+    'assets/images/web_bg2.jpg'
+  ];
+  final List<String> imageInfoList = [
+    "Photoed by Yueyu Hu.",
+    "Photoed by Datong Wei."];
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +32,18 @@ class _WelcomePageState extends State<WelcomePage> {
         child:Stack(
         
         children: [
+          // Image.asset(
+          //   imagePathList[index],
+          //   fit: BoxFit.fill,
+            
+          // ),
         
         Container(
           width: 1800,
           height:1800,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/images/web_background1.jpg'),
+              image: AssetImage(imagePathList[index]),
               fit: BoxFit.fill
             )
           ),
@@ -151,16 +166,76 @@ class _WelcomePageState extends State<WelcomePage> {
           child: 
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 0, 10, 7),
-                  child: Text("Photoed by Yueyu Hu.", style: TextStyle(color: const Color.fromARGB(255, 205, 205, 205), fontSize: 12),
+                  child: Text(imageInfoList[index], style: TextStyle(color: const Color.fromARGB(255, 205, 205, 205), fontSize: 12),
                   
                               ),
                 ),
           ),
-        
-        ]
+
+        Align(
+          alignment: Alignment.topCenter,
+          child: 
+                Opacity(
+                  opacity: 0.5,
+                  child: Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () => {setState(() {
+                          index = 0;
+                        })},
+                        child: Container(
+                          margin: EdgeInsets.fromLTRB(10, 10, 5, 10),
+                          decoration: BoxDecoration(
+                            color: Colors.grey,
+                            border: Border.all(
+                              color: Colors.white,
+                              width: 2.3
+                            )
+                          ),
+                          width: 25,
+                          height: 25,
+                          child: Center(child: 
+                            const Text('1', style:TextStyle(
+                              color: Colors.white,
+                              fontSize: 11
+                            ))
+                            )
+                          ),
+                      ),
+                      GestureDetector(
+                        onTap: () => {setState(() {
+                          index = 1;
+                        })},
+                        child: Container(
+                          margin: EdgeInsets.fromLTRB(5, 10, 5, 10),
+                          decoration: BoxDecoration(
+                            color: Colors.grey,
+                            border: Border.all(
+                              color: Colors.white,
+                              width: 2.3
+                            )
+                          ),
+                          width: 25,
+                          height: 25,
+                          child: Center(child: 
+                            const Text('2', style:TextStyle(
+                              color: Colors.white,
+                              fontSize: 11
+                            ))
+                            )
+                          ),
+                      ),
+                    ],
+                  ),
+                ),
+                ),
+          ]),
+      
+      
+      
+      
       ),
-      ),
-    );
+      );
   }
 }
 

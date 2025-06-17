@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:my_web_page/homepage/about_me_experience.dart';
-import 'package:my_web_page/homepage/friends.dart';
-import 'package:my_web_page/homepage/project.dart';
+// import 'package:my_web_page/homepage/about_me_experience.dart';
+// import 'package:my_web_page/homepage/friends.dart';
+// import 'package:my_web_page/homepage/project.dart';
+import 'package:my_web_page/widgets/content_box.dart';
+import 'package:my_web_page/widgets/friend_widgets.dart';
+import 'package:my_web_page/widgets/myself.dart';
+import 'package:my_web_page/widgets/web_news.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -23,16 +27,37 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    Widget aboutMeContent = Text(aboutme,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.normal
+                                )
+                              );
+    Widget experienceContent = Text(experience,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.normal
+                                )
+                              );
+    Widget friendsContent = Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  FriendsLink(imagePath: 'assets/images/yanxingwang.jpg', urlString: "https://cv.ywang.site/experiences/"),
+                  FriendsLink(imagePath: 'assets/images/yueyuhu.jpg', urlString: "https://huzi96.github.io/"),
+                  FriendsLink(imagePath: 'assets/images/jingmengcui.jpg', urlString: "https://jingmeng-cui.netlify.app/"),
+                  
+                ]);
     return
-
       Scaffold(
         body:LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) 
         { 
-          double margin_width = constraints.maxWidth*0.1;
+          double marginWidth = constraints.maxWidth*0.1;
           return 
           ListView(
             children: [Container(
-              padding: EdgeInsets.fromLTRB(margin_width, 0, margin_width, 0),
+              padding: EdgeInsets.fromLTRB(marginWidth, 0, marginWidth, 0),
               decoration: BoxDecoration(
                 image: DecorationImage(
               image: AssetImage('assets/images/blog_background.jpg'),
@@ -44,31 +69,36 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  
                   Flexible(
                     flex: 14,
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(8, 40, 8, 40),
                       child: Column(
                         children: [
-                          
-                          // About me
-                          AboutMeOrExperience(title: "About me", content: aboutme),
+                          ContentBox(
+                            title: "About me", 
+                            contentWidget: aboutMeContent
+                          ),
                           SizedBox(height: 40,),
-                          // Experience
-                          AboutMeOrExperience(title: "Experience", content: experience),
+                          ContentBox(
+                            title: "Experience", 
+                            contentWidget: experienceContent  
+                          ),
                           SizedBox(height: 40,),
                           // Project
-                          ProjectsBox(),
+                          ContentBox(
+                            title: "Project", 
+                            contentWidget: Container(child: null,)  
+                          ),
                           SizedBox(height: 40,),
-                      
-                          // Friends
-                          FriendsBox(),
+                          ContentBox(
+                            title: "Friends", 
+                            contentWidget: friendsContent
+                          ),
                         ],
                       ),
                     ),
                   ),
-
                   Flexible(
                     flex: 6,
                     child: 
@@ -76,92 +106,23 @@ class _HomePageState extends State<HomePage> {
                       padding: const EdgeInsets.fromLTRB(80, 40, 8, 40),
                         child: Column(
                           children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                SizedBox(height: 70,),
-                                Container(
-                                  width: 180,
-                                  height: 180,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: ClipOval(child: Image.asset('assets/images/web_background1.jpg',
-                                  fit: BoxFit.cover,)),
-                                ),
-                                SizedBox(height: 10,),
-                                Text("Zichun Wang"),
-                                SizedBox(height: 10,),
-                                
-                                Text("汪子淳"),
-                                SizedBox(height: 10,),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.mail),
-                                    SizedBox(width: 10,),
-                                    Text("wangzichunww AT gmail")
-                                  ],
-                                ),
-                                SizedBox(height: 5,),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.location_city),
-                                    SizedBox(width: 10,),
-                                    Text("Shenzhen, China")
-                                  ],
-                                ),
-                                
-                             
-                              ],
+                            MySelfCard(
+                              englishName: 'Zichun Wang', 
+                              chineseName: '汪子淳', 
+                              mail: 'wangzichunww AT gmail', 
+                              address: 'Shenzhen, China', 
+                              picPath: 'assets/images/zichunwang.jpg',
                             ),
                             SizedBox(height: 100,),
-                            Opacity(
-                            opacity: 0.7,
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Container(
-                                    width: double.infinity,
-                                    padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
-                                    color: const Color.fromARGB(255, 157, 188, 205),
-                                    child: Text("网站资讯", style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 28
-                                    ),),
-                                  ),
-                                  Container(
-                                    width: double.infinity,
-                                    height: 200,
-                                    color: const Color.fromARGB(255, 202, 201, 201),
-                                    padding: EdgeInsets.fromLTRB(15, 20, 15, 30),
-                                    child: null
-                                    ),
-                                    
-                          ]),)
-
-                                ],
-                              ),
-                            )
-
+                            WebNewsCard(),
+                          ],
                         ),
+                    )
+                  ),
             ]),
-                    ),
-                  
-            
-                ],
-              
-            
-          );
-        
-        })
-
+          )],
       );
-
-
-
+      })
+      );
   }
 }

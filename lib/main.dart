@@ -18,9 +18,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.light()
       ),
-      home: BlogPage(), 
+      home: 
+      //BlogPage(), 
       
-      //const WelcomePage(title: "Wang Zichun's web"),
+      const WelcomePage(title: "Wang Zichun's web"),
     );
   }
 }

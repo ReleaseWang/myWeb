@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
 
-class AboutMeOrExperience extends StatelessWidget
+class ContentBox extends StatelessWidget
 {
   
   final String title;
-  final String? content;
+  final Widget contentWidget;
   
-
-  const AboutMeOrExperience({super.key, required this.title, required this.content});
+  const ContentBox({super.key, required this.title, required this.contentWidget});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +39,7 @@ class AboutMeOrExperience extends StatelessWidget
                 decoration: BoxDecoration(
                   color: const Color.fromARGB(255, 97, 182, 252),
                 ),
-                child: content==null?null :null
+                child: contentWidget,
               )
             ],
           ),

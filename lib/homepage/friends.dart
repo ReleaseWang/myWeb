@@ -1,16 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
-
-void openExternalUrl(String url)  {
-  // 检查 URL 是否有效
-  // if ( canLaunchUrl(Uri.parse(url))) {
-  //   // 打开 URL（默认使用系统浏览器）
-    launchUrl(Uri.parse(url),
-        mode: LaunchMode.externalApplication,);
-    return;
-  // }
-}
-
 
 class FriendsBox extends StatelessWidget
 {
@@ -61,7 +49,7 @@ class FriendsBox extends StatelessWidget
                       fit: BoxFit.cover,)),
                     ),
                     onTap: () {
-                      openExternalUrl("https://cv.ywang.site/experiences/");
+                      // openExternalUrl("https://cv.ywang.site/experiences/");
                     },
                   ),
                   GestureDetector(
@@ -76,7 +64,7 @@ class FriendsBox extends StatelessWidget
                       fit: BoxFit.cover,)),
                     ),
                     onTap: () {
-                      openExternalUrl("https://huzi96.github.io/");
+                      // openExternalUrl("https://huzi96.github.io/");
                     },
                   )
                 ],
