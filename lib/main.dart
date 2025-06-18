@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       home: 
       //BlogPage(), 
       
-      const WelcomePage(title: "Wang Zichun's web"),
+      const WelcomePage(),
     );
   }
 }

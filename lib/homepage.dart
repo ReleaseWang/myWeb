@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:my_web_page/homepage/about_me_experience.dart';
-// import 'package:my_web_page/homepage/friends.dart';
-// import 'package:my_web_page/homepage/project.dart';
 import 'package:my_web_page/widgets/content_box.dart';
 import 'package:my_web_page/widgets/friend_widgets.dart';
 import 'package:my_web_page/widgets/myself.dart';

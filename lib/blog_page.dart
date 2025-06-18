@@ -67,12 +67,11 @@ class _BlogPageState extends State<BlogPage> {
 
 
     return
-
       Scaffold(
         appBar: AppBar(
           // 可以考虑使用TabBar
           backgroundColor: const Color.fromARGB(53, 168, 250, 218),
-          title: Text('ZichunWang'),
+          title: Text('Zichun Wang'),
           actions: [
             IconButton(icon: Icon(Icons.pages), onPressed: () {setState(() {
               pageIndex = 0;  
@@ -96,7 +95,6 @@ class _BlogPageState extends State<BlogPage> {
         body:LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) 
         {
               return page;
-        
         })
 
       );

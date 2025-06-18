@@ -1,15 +1,11 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-
-import 'blog_page.dart';
-
-
+import 'package:my_web_page/blog_page.dart';
+import 'package:my_web_page/homepage.dart';
+import 'package:my_web_page/widgets/bg_selector.dart';
+import 'package:my_web_page/widgets/button_in_welcom.dart';
 
 class WelcomePage extends StatefulWidget {
-  const WelcomePage({super.key, required this.title});
-
-  final String title;
+  const WelcomePage({super.key});
 
   @override
   State<WelcomePage> createState() => _WelcomePageState();
@@ -19,48 +15,59 @@ class _WelcomePageState extends State<WelcomePage> {
   int index = 0;
   final List<String> imagePathList = [
     'assets/images/web_bg1.jpg',
-    'assets/images/web_bg2.jpg'
+    'assets/images/web_bg2.jpg',
+    'assets/images/web_bg3.jpg',
+    'assets/images/web_bg4.jpg',
   ];
   final List<String> imageInfoList = [
     "Photoed by Yueyu Hu.",
-    "Photoed by Datong Wei."];
+    "Photoed by Datong Wei.",
+    "Photoed by Yueyu Hu.",
+    "Photoed by Yueyu Hu.",
+  ];
+
+  final String name = "Zichun Wang - 汪子淳";
+  final String sentence1 = "莫向外求";
+  final String sentence2 = "今天也为这美好的世界干杯";
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> bgButtons = [];
+    for (int i=0; i<3; i++)
+    { 
+      double rightSpace = i==2?15:5;
+      bgButtons.add(
+        BgSelector(
+            leftMargin: 5, 
+            rightMargin: rightSpace, 
+            index: i+1, 
+            func: () => setState(() {
+              index = i;
+            })      
+      ));
+    }
     return Scaffold(
       body: Center(
         child:Stack(
-        
         children: [
-          // Image.asset(
-          //   imagePathList[index],
-          //   fit: BoxFit.fill,
-            
-          // ),
-        
-        Container(
-          width: 1800,
-          height:1800,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(imagePathList[index]),
-              fit: BoxFit.fill
-            )
-          ),
-
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
+          Image.asset(
+            imagePathList[index],
+            width: double.infinity,
+            height:double.infinity,
+            fit: BoxFit.fill,
+            gaplessPlayback:true
+          ),  
+          Column(
+            mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                "Zichun Wang - 汪子淳",
+              Text(name,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 40,
-                  fontWeight: FontWeight.w300
                 ),
               ),
-              Text("莫向外求",
+              Text(sentence1,
                 style: TextStyle(
                   color: Color.fromARGB(255, 230, 230, 230),
                   fontSize: 27,
@@ -72,170 +79,50 @@ class _WelcomePageState extends State<WelcomePage> {
                 painter: LinePainter(),     // 自定义画笔
               ),
               SizedBox(height: 20,),
-              Text("今天也为这美好的世界干杯",
+              Text(sentence2,
                 style: TextStyle(
                   color: Color.fromARGB(255, 240, 240, 240),
                   fontSize: 23,
-                  fontWeight: FontWeight.w100
                 ),
               ),
               SizedBox(height: 20,),
               Row(
-                 mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ElevatedButton(
-                    onPressed: () => {Navigator.push( 
-                      context,
-                      MaterialPageRoute(builder: (context) {
-                        return BlogPage();
-                      }),
-                    )},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(0, 0, 0, 0),          // 背景色
-                      foregroundColor: const Color.fromARGB(255, 240, 240, 240),         // 文字/图标颜色
-                      shape: RoundedRectangleBorder(        // 圆角
-                        borderRadius: BorderRadius.circular(18),
-                      ),
-                      elevation: 5,                         // 阴影高度
-                      side: BorderSide(color: const Color.fromARGB(255, 215, 215, 215), width: 2), // 边框
-                    ),
-                    
-                    child: SizedBox(
-                      width: 40,
-                      height: 40,
-                      child: Center(child: 
-                        const Text('博 客', style:TextStyle(
-                          fontSize: 16
-                        ))
-                        )
-                      ),
-                  ),
+                  ButtonInWelcom(buttonString: '博 客', routeWidget: BlogPage(), buttonWidth: 40,),
                   SizedBox(width: 20,),
-                  ElevatedButton(
-                    onPressed: () => print('按钮2被点击'),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(0, 0, 0, 0),          // 背景色
-                      foregroundColor: const Color.fromARGB(255, 240, 240, 240),         // 文字/图标颜色
-                      shape: RoundedRectangleBorder(        // 圆角
-                        borderRadius: BorderRadius.circular(18),
-                      ),
-                      elevation: 5,                         // 阴影高度
-                      side: BorderSide(color: const Color.fromARGB(255, 215, 215, 215), width: 2), // 边框
-                    ),
-                    
-                    child: SizedBox(
-                      width: 50,
-                      height: 40,
-                      child: Center(child: 
-                        const Text('Github', style:TextStyle(
-                          fontSize: 16
-                        ))
-                        )
-                      ),
-                  ),
+                  ButtonInWelcom(buttonString: 'Github', routeWidget: BlogPage(), buttonWidth: 50,),
                   SizedBox(width: 20,),
-                  ElevatedButton(
-                    onPressed: () => print('按钮3被点击'),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(0, 0, 0, 0),          // 背景色
-                      foregroundColor: const Color.fromARGB(255, 240, 240, 240),         // 文字/图标颜色
-                      shape: RoundedRectangleBorder(        // 圆角
-                        borderRadius: BorderRadius.circular(18),
-                      ),
-                      elevation: 5,                         // 阴影高度
-                      side: BorderSide(color: const Color.fromARGB(255, 215, 215, 215), width: 2), // 边框
-                    ),
-                    child: SizedBox(
-                      width: 50,
-                      height: 40,
-                      child: Center(child: 
-                        const Text('联络我', style:TextStyle(
-                          fontSize: 16
-                        ))
-                        )
-                      ),
-                  )
+                  ButtonInWelcom(buttonString: '联络我', routeWidget: BlogPage(), buttonWidth: 50,),
                 ],
               )
-
             ]
           ),
-        ),
         Align(
           alignment: Alignment.bottomRight,
           child: 
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 10, 7),
-                  child: Text(imageInfoList[index], style: TextStyle(color: const Color.fromARGB(255, 205, 205, 205), fontSize: 12),
-                  
-                              ),
+                  padding: const EdgeInsets.fromLTRB(0, 0, 10, 10),
+                  child: Text(imageInfoList[index], 
+                      style: TextStyle(
+                      color: const Color.fromARGB(255, 205, 205, 205), 
+                      fontSize: 12
+                    ),),
                 ),
           ),
 
         Align(
-          alignment: Alignment.topCenter,
-          child: 
-                Opacity(
-                  opacity: 0.5,
-                  child: Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () => {setState(() {
-                          index = 0;
-                        })},
-                        child: Container(
-                          margin: EdgeInsets.fromLTRB(10, 10, 5, 10),
-                          decoration: BoxDecoration(
-                            color: Colors.grey,
-                            border: Border.all(
-                              color: Colors.white,
-                              width: 2.3
-                            )
-                          ),
-                          width: 25,
-                          height: 25,
-                          child: Center(child: 
-                            const Text('1', style:TextStyle(
-                              color: Colors.white,
-                              fontSize: 11
-                            ))
-                            )
-                          ),
-                      ),
-                      GestureDetector(
-                        onTap: () => {setState(() {
-                          index = 1;
-                        })},
-                        child: Container(
-                          margin: EdgeInsets.fromLTRB(5, 10, 5, 10),
-                          decoration: BoxDecoration(
-                            color: Colors.grey,
-                            border: Border.all(
-                              color: Colors.white,
-                              width: 2.3
-                            )
-                          ),
-                          width: 25,
-                          height: 25,
-                          child: Center(child: 
-                            const Text('2', style:TextStyle(
-                              color: Colors.white,
-                              fontSize: 11
-                            ))
-                            )
-                          ),
-                      ),
-                    ],
-                  ),
-                ),
-                ),
-          ]),
-      
-      
-      
-      
+          alignment: Alignment.topRight,
+          child: Opacity(
+              opacity: 0.5,
+              child: Row(
+                mainAxisSize:MainAxisSize.min,
+                children: bgButtons),
+            ),
+          ),
+        ]),
       ),
-      );
+    );
   }
 }
 
