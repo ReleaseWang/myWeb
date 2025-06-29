@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:my_web_page/blog_page.dart';
-import 'package:my_web_page/homepage.dart';
 import 'package:my_web_page/widgets/bg_selector.dart';
 import 'package:my_web_page/widgets/button_in_welcom.dart';
+
+import 'widgets/friend_widgets.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -11,24 +12,40 @@ class WelcomePage extends StatefulWidget {
   State<WelcomePage> createState() => _WelcomePageState();
 }
 
+// typedef BlogNavigationCallback = void Function(); // 无参数回调类型
+
 class _WelcomePageState extends State<WelcomePage> {
   int index = 0;
   final List<String> imagePathList = [
     'assets/images/web_bg1.jpg',
     'assets/images/web_bg2.jpg',
     'assets/images/web_bg3.jpg',
-    'assets/images/web_bg4.jpg',
+    // 'assets/images/web_bg4.jpg',
   ];
   final List<String> imageInfoList = [
-    "Photoed by Yueyu Hu.",
-    "Photoed by Datong Wei.",
-    "Photoed by Yueyu Hu.",
-    "Photoed by Yueyu Hu.",
+    "Photo by Yueyu Hu.",
+    "Photo by Datong Wei.",
+    "Photo by Yueyu Hu.",
+    // "Photoed by Yueyu Hu.",
   ];
 
   final String name = "Zichun Wang - 汪子淳";
   final String sentence1 = "莫向外求";
   final String sentence2 = "今天也为这美好的世界干杯";
+
+  void blogFuc()
+  {
+      Navigator.push(context,
+                MaterialPageRoute(builder: (context) {
+                  return BlogPage();
+                }),
+                );
+  }
+
+  void githubFuc()
+  {
+    openExternalUrl("https://github.com/ReleaseWang");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,9 +60,11 @@ class _WelcomePageState extends State<WelcomePage> {
             index: i+1, 
             func: () => setState(() {
               index = i;
-            })      
+            }),
+            isSelected: index==i,   
       ));
     }
+
     return Scaffold(
       body: Center(
         child:Stack(
@@ -89,11 +108,11 @@ class _WelcomePageState extends State<WelcomePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ButtonInWelcom(buttonString: '博 客', routeWidget: BlogPage(), buttonWidth: 40,),
+                  ButtonInWelcom(buttonString: '博 客', func: blogFuc, buttonWidth: 40,),
                   SizedBox(width: 20,),
-                  ButtonInWelcom(buttonString: 'Github', routeWidget: BlogPage(), buttonWidth: 50,),
+                  ButtonInWelcom(buttonString: 'Github', func: githubFuc, buttonWidth: 50,),
                   SizedBox(width: 20,),
-                  ButtonInWelcom(buttonString: '联络我', routeWidget: BlogPage(), buttonWidth: 50,),
+                  ButtonInWelcom(buttonString: '联络我', func: (){}, buttonWidth: 50,),
                 ],
               )
             ]

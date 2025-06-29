@@ -4,21 +4,16 @@ import 'package:flutter/material.dart';
 class ButtonInWelcom extends StatelessWidget
 {
   final String buttonString;
-  final Widget routeWidget;
+  final VoidCallback func;
   final double buttonWidth;
 
-  const ButtonInWelcom({super.key, required this.buttonString, required this.routeWidget, required this.buttonWidth, });
+  const ButtonInWelcom({super.key, required this.buttonString, required this.func, required this.buttonWidth, });
   
 
  @override
   Widget build(BuildContext context) {
     return  ElevatedButton(
-              onPressed: () => {Navigator.push( 
-                context,
-                MaterialPageRoute(builder: (context) {
-                  return routeWidget;
-                }),
-              )},
+              onPressed: func,
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromARGB(0, 0, 0, 0),          // 背景色
                 foregroundColor: const Color.fromARGB(255, 240, 240, 240),         // 文字/图标颜色

@@ -24,6 +24,7 @@ class MySelfCard extends StatelessWidget
                   height: 180,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
+                    border: BoxBorder.all(color: Colors.white, width: 5)
                   ),
                   child: ClipOval(
                     child: Image.asset(picPath,

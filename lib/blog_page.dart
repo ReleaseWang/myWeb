@@ -70,7 +70,7 @@ class _BlogPageState extends State<BlogPage> {
       Scaffold(
         appBar: AppBar(
           // 可以考虑使用TabBar
-          backgroundColor: const Color.fromARGB(53, 168, 250, 218),
+          backgroundColor: const Color.fromARGB(53, 10, 155, 246),
           title: Text('Zichun Wang'),
           actions: [
             IconButton(icon: Icon(Icons.pages), onPressed: () {setState(() {
