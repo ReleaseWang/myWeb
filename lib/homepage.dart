@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
                   FriendsLink(imagePath: 'assets/images/yanxingwang.jpg', urlString: "https://cv.ywang.site/experiences/"),
                   FriendsLink(imagePath: 'assets/images/yueyuhu.jpg', urlString: "https://huzi96.github.io/"),
                   FriendsLink(imagePath: 'assets/images/jingmengcui.jpg', urlString: "https://jingmeng-cui.netlify.app/"),
-                  
+                  FriendsLink(imagePath: 'assets/images/haji.jpg', urlString: "https://scholar.google.com/citations?hl=zh-CN&user=gySXTFMAAAAJ&view_op=list_works"),
                 ]);
     return
       Scaffold(
