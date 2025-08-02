@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'blog_page.dart';
 import 'welcome_page.dart';
 
@@ -15,13 +14,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.light()
-      ),
-      home: 
-      //BlogPage(), 
-      
-      const WelcomePage(),
+      theme: ThemeData(colorScheme: ColorScheme.light()),
+      home: //BlogPage(),
+          const WelcomePage(),
     );
   }
 }
