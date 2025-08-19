@@ -44,28 +44,28 @@ class _HomePageState extends State<HomePage> {
   Widget createFriendContent(double scale) {
     List<Widget> friends = [
       FriendsLink(
-        imagePath: 'assets/images/yanxingwang.jpg',
+        imagePath: 'assets/images/avatar/yanxingwang.jpg',
         urlString: "https://cv.ywang.site/experiences/",
         scale: scale,
       ),
       FriendsLink(
-        imagePath: 'assets/images/yueyuhu.jpg',
+        imagePath: 'assets/images/avatar/yueyuhu.jpg',
         urlString: "https://huzi96.github.io/",
         scale: scale,
       ),
       FriendsLink(
-        imagePath: 'assets/images/jingmengcui.jpg',
+        imagePath: 'assets/images/avatar/jingmengcui.jpg',
         urlString: "https://jingmeng-cui.netlify.app/",
         scale: scale,
       ),
       FriendsLink(
-        imagePath: 'assets/images/haji.jpg',
+        imagePath: 'assets/images/avatar/haji.jpg',
         urlString:
             "https://scholar.google.com/citations?hl=zh-CN&user=gySXTFMAAAAJ&view_op=list_works",
         scale: scale,
       ),
       FriendsLink(
-        imagePath: 'assets/images/wangyixuan.jpg',
+        imagePath: 'assets/images/avatar/yixuanwang.jpg',
         urlString: "https://am.yixuan-wang.site/",
         scale: scale,
       ),
@@ -173,7 +173,7 @@ class _HomePageState extends State<HomePage> {
             chineseName: '汪子淳',
             mail: 'wangzichunww AT gmail',
             address: 'Shenzhen, China',
-            picPath: 'assets/images/zichunwang.jpg',
+            picPath: 'assets/images/avatar/zichunwang.jpg',
             scale: factorAvg,
           );
           Widget webInfo = WebNewsCard(scale: factorAvg);
@@ -235,7 +235,7 @@ class _HomePageState extends State<HomePage> {
           return Stack(
             children: [
               Image.asset(
-                'assets/images/blog_background.jpg',
+                'assets/images/bg/blog_background.jpg',
                 width: constraints.maxWidth,
                 height: constraints.maxHeight,
                 fit: BoxFit.cover,

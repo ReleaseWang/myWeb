@@ -16,16 +16,14 @@ class WelcomePage extends StatefulWidget {
 class _WelcomePageState extends State<WelcomePage> {
   int index = 0;
   final List<String> imagePathList = [
-    'assets/images/web_bg1.jpg',
-    'assets/images/web_bg2.jpg',
-    'assets/images/web_bg3.jpg',
-    // 'assets/images/web_bg4.jpg',
+    'assets/images/bg/web_bg_1.jpg',
+    'assets/images/bg/web_bg_2.jpg',
+    'assets/images/bg/web_bg_3.jpg',
   ];
   final List<String> imageInfoList = [
     "Photo by Yueyu Hu.",
     "Photo by Datong Wei.",
     "Photo by Yueyu Hu.",
-    // "Photoed by Yueyu Hu.",
   ];
 
   final String name = "Zichun Wang - 汪子淳";
@@ -84,6 +82,7 @@ class _WelcomePageState extends State<WelcomePage> {
         ),
       );
     }
+    String imagePath = imagePathList[index];
 
     return Scaffold(
       body: Container(
@@ -92,9 +91,9 @@ class _WelcomePageState extends State<WelcomePage> {
           child: Stack(
             children: [
               Image.asset(
-                imagePathList[index],
-                width: double.infinity,
-                height: double.infinity,
+                imagePath,
+                width: screenWidth,
+                height: screenHeight,
                 fit: BoxFit.cover,
                 gaplessPlayback: true,
               ),
@@ -189,6 +188,24 @@ class _WelcomePageState extends State<WelcomePage> {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: bgButtons,
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(0, 0, 0, 10 * factorAvg),
+                  child: GestureDetector(
+                    onTap: () {
+                      openExternalUrl("https://beian.miit.gov.cn");
+                    },
+                    child: Text(
+                      "沪ICP备2025139285号",
+                      style: TextStyle(
+                        color: const Color.fromARGB(102, 224, 224, 224),
+                        fontSize: 12 * factorAvg,
+                      ),
+                    ),
                   ),
                 ),
               ),
