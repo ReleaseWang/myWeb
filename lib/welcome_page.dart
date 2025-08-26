@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:my_web_page/blog_page.dart';
+import 'package:my_web_page/widgets/beian.dart';
 import 'package:my_web_page/widgets/bg_selector.dart';
 import 'package:my_web_page/widgets/button_in_welcom.dart';
 import 'widgets/friend_widgets.dart';
@@ -142,7 +143,7 @@ class _WelcomePageState extends State<WelcomePage> {
                         factorW: factorW,
                         factorH: factorH,
                       ),
-                      SizedBox(width: 20),
+                      SizedBox(width: 20 * factorAvg),
                       ButtonInWelcom(
                         buttonString: 'Github',
                         func: githubFuc,
@@ -150,7 +151,7 @@ class _WelcomePageState extends State<WelcomePage> {
                         factorW: factorW,
                         factorH: factorH,
                       ),
-                      SizedBox(width: 20),
+                      SizedBox(width: 20 * factorAvg),
                       ButtonInWelcom(
                         buttonString: 'Null',
                         func: () {},
@@ -191,24 +192,7 @@ class _WelcomePageState extends State<WelcomePage> {
                   ),
                 ),
               ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(0, 0, 0, 10 * factorAvg),
-                  child: GestureDetector(
-                    onTap: () {
-                      openExternalUrl("https://beian.miit.gov.cn");
-                    },
-                    child: Text(
-                      "沪ICP备2025139285号",
-                      style: TextStyle(
-                        color: const Color.fromARGB(102, 224, 224, 224),
-                        fontSize: 12 * factorAvg,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              BeianW(scale: factorAvg),
             ],
           ),
         ),
